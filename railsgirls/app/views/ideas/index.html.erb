@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing ideas</h1>
+<%= link_to 'New Idea', new_idea_path %>
+<hr>
+<div class="padd">
+	<% @ideas.in_groups_of(3) do |group| %>
+	<div class="row">
+		<br>
+		<% group.compact.each do |idea| %>
+		<div class="col-md-3">
+			<h4><%=  idea.name%></h4>
+			<%= link_to idea do %>
+			<%= image_tag idea.picture_url(:thumb) if idea.picture.present? %>
+			<% end %>
+			<strong><%= idea.comments.count %> comments  </strong>
+			<span class="sty"><%= idea.format_date %></span>
+		</div>
+		<% end %>
+	</div>
+	<% end %>
+</div>
+
+
+
+
+
+
+
